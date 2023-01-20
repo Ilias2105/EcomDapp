@@ -1,0 +1,282 @@
+.App {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/*Navbar*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 70px;
+  box-shadow: 1px 1px 6px rgb(186, 176, 225);
+}
+
+.navbar-brand {
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.nav-item {
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(6, 5, 5);
+  text-decoration: none;
+  padding: 0 15px;
+}
+
+
+
+.nav-item:hover {
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+.nav-connect {
+  width: 135px;
+  height: 40px;
+  margin-right: 20px;
+  background-color: rgb(236, 85, 51);
+  border-radius: 5px;
+  font-family: "Open Sans";
+  font-size: 1.15em;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-connect:hover {
+  width: 160px;
+  background-color: rgb(240, 81, 81);
+}
+
+.logo {
+  width: 50%;
+  height: 75%;
+  margin-left: 10px;
+}
+
+/*Banner*/
+
+.banimg {
+  width: 95%;
+  height: 400px;
+}
+
+.search {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+h2{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  opacity: 0.9;
+}
+.search-bar {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 50px;
+  width: 500px;
+  background-color: rgba(255, 255, 255, 0.713);
+  margin-left: 100px;
+}
+
+.search-button {
+  background-color: rgb(231, 30, 30);
+  color: #ccc;
+  border: none;
+  font-size: 15px;
+  width: 40px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.withdraw {
+    width: 150px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e32016;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Page Home */
+
+.watch {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.logo-eth {
+  height: 26px;
+}
+
+/* Page Buy */
+
+.Buy {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.imgBuy {
+  margin-top: 25px;
+  margin-left: 200px;
+  width: 480px;
+  height: 400px;
+  margin-bottom: 25px;
+}
+
+.imgBuy:hover {
+  width: 630px;
+  height: 520px;
+}
+
+.elementBuy{
+  margin-left:170px; 
+  margin-top: 25px;
+}
+
+p {
+  font-size: 25px;
+}
+
+.btnBuy{
+  width: 150px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d8401e;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btnBuy:hover{
+  background-color: #ea2f09;
+}
+
+.form-select {
+    border: 1px solid #ccc;
+    width: 80px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff;
+}
+
+.ban-buy {
+  margin-top: 50px;
+  width: 90%;
+  height: 50%;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin-left: 220px;
+  margin-top: 50px;
+  box-shadow: 1px 1px 6px rgb(33, 32, 37);
+  background-color: rgb(243, 243, 243);
+}
+
+.comment {
+  margin-top: 20px;
+  box-shadow: 1px 1px 6px rgb(186, 176, 225);
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+
+.form-comment {
+background-color:  rgb(11, 11, 14);
+ box-shadow: 1px 1px 6px rgb(23, 23, 24);
+ margin-bottom: 25px;
+ width: 80%;
+ margin: 0 auto;
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+.text-comment {
+  font-size: 15px;
+}
+
+/* Page Order */
+
+.order{
+  width: 800px;
+  box-shadow: 1px 1px 6px rgb(186, 176, 225);
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.order:hover {
+  box-shadow: 3px 3px 12px rgb(7, 7, 7);
+}
+
+.img-order{
+  width: 250px;
+  height: 200px;
+}
+
+.item-order{
+  margin-left: 30px;
+}
+
+h4{
+  display: inline;
+}
+
+/*Footer*/
+
+.site-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 410px;
+}
+
+.footer-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-col {
+    width: 30%;
+    text-align: center;
+}
+
+.footer-bottom {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.p-footer {
+  font-size: 10px;
+}
+
+
+
+
+
+
+

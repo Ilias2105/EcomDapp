@@ -1,0 +1,32 @@
+.product {
+    text-align: center;
+    width: 290px;
+    margin: 20px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.product:hover {
+    box-shadow: 3px 3px 12px rgb(7, 7, 7);
+}
+
+.product-image {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-name {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(211, 54, 54);
+}
