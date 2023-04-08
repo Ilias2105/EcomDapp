@@ -44,7 +44,7 @@ const MyOrders: FunctionComponent = () => {
 
     return (
       <div className="App">
-        <h2 className='text-center mt-5'>My orders</h2>
+        <h2 className='text-center mt-5'>Mes commandes</h2>
         {error && <p className="error">{error}</p>}
                          {orders.map(order => (
                             <OrderCard key={order.id} order={order} />

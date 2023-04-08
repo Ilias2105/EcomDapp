@@ -4,8 +4,6 @@ import Watch from '../artifacts/contracts/Watch.sol/Watch.json';
 import WatchModels from '../models/watch';
 import WatchCard from '../components/watch-card';
 import { useNavigate } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 const WatchAddress : any = process.env.REACT_APP_CONTRACT_ADDRESS;
@@ -53,44 +51,25 @@ const Home: FunctionComponent = () => {
             }
             catch(err) {
               setError('Une erreur est survenue.');
+              console.log(err)
             }
         }
       }
 
-      async function withdraw() {
-        setError('');
-        const accounts = await window.ethereum!.request!({method:'eth_requestAccounts'});
-        const provider = new ethers.providers.Web3Provider(window.ethereum!);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(WatchAddress, Watch.abi, signer);
-        try {
-          let overrides = {
-            from: accounts[0]
-          }
-          const transaction = await contract.withdraw(overrides);
-          await transaction.wait();
-        }
-        catch(err) {
-          setError('Une erreur est survenue.');
-        }
-      }
 
     return (
       <div className="App">
-        <img className="banimg" src='/ban.png'/>
-          <div className='search'>
-            <h2>Find the watch of your dreams</h2>
-            <input type="search" className="search-bar" placeholder="Search..."/>
-            <button className="search-button"><FontAwesomeIcon icon={faSearch} /></button>
-          </div>
-          {account === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" &&
-            <button className="withdraw" onClick={() => withdraw()}>Withdraw</button>
-          }
+        <img className="banimg" src='/banniere.jpg'/>
+        <div className='search'>
+          <h2>Trouvez la montre de vos rêves</h2>
+          <input type="search" className="search-bar" placeholder="Recherche..."/>
+          <button className="search-button">&#128269;</button>
+        </div>
         <div className="watch">
-            {error && <p className="error">{error}</p>}
-            {watches.map(watch => (
+          {error && <p className="error">{error}</p>}
+          {watches.map(watch => (
             < WatchCard key={watch.id} watch={watch} />
-            ))}
+          ))}
         </div>
       </div>
     );

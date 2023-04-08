@@ -1,4 +1,3 @@
-import './watch-card.css';
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import  WatchModels  from '../models/watch';
 import { useNavigate } from 'react-router';

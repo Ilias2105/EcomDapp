@@ -169,22 +169,22 @@ const addComm = async (e: React.FormEvent<HTMLFormElement>) => {
                 <div className="elementBuy">
                     <h2>{watch.name}</h2>
                     <p> {watch.description}</p>
-                    <p>Price : {watch.price} <img className="logo-eth" src='/logoeth.png'/> </p>
-                    <p>Quantity : {watch.quantity}</p>
+                    <p>Prix : {watch.price} <img className="logo-eth" src='/logoeth.png'/> </p>
+                    <p>Quantité : {watch.quantity}</p>
                     {input}
                     {select}
                     {button}
                 </div>
             </div>
             <img className="ban-buy" src='/ban-buy.png'/>
-            <div className='comments'> <h3>Comments</h3>
+            <div className='comments'> <h3>Commentaires</h3>
                           {comments.map(comment => ( 
                               <CommentCard key={comment.id} comment={comment} />
                             ))}
                           <form className="form-comment" onSubmit={ e => addComm(e) }>
-                                <label htmlFor="comment" className="form-label"><h4>Add comment</h4></label>
+                                <label htmlFor="comment" className="form-label"><h4>Ajouter un commentaire</h4></label>
                                 <textarea className="add-comment" id='comment' name='comment' value={form.comment.value} onChange={e => handleInputChange(e)}></textarea>
-                                <button type="submit">Submit</button>
+                                <button type="submit">Envoyer</button>
                           </form>
               </div>
               </div>

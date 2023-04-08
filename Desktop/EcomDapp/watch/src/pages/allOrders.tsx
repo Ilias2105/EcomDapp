@@ -47,18 +47,39 @@ const AllOrders: FunctionComponent<Props> = ({ account, setAccount }) => {
     }
   }
 
+  async function withdraw() {
+    setError('');
+    const accounts = await window.ethereum!.request!({method:'eth_requestAccounts'});
+    const provider = new ethers.providers.Web3Provider(window.ethereum!);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(WatchAddress, Watch.abi, signer);
+    try {
+      let overrides = {
+        from: accounts[0]
+      }
+      const transaction = await contract.withdraw(overrides);
+      await transaction.wait();
+    }
+    catch(err) {
+      setError('Une erreur est survenue.');
+    }
+  }
+
     return (
       <div className="App">
         {error && <p className="error">{error}</p>}
-        <h2>Customers orders</h2>
+        <h2>Commandes clients</h2>
             {account === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" && 
                 (() => {
                     return (
+                      <div>
                         <div>
                             {orders.map(order => (
                                 <OrderCard key={order.id} order={order} />
                             ))}
                         </div>
+                        <button className="withdraw" onClick={() => withdraw()}>Withdraw</button>
+                      </div>
                     );
                 })()
             }

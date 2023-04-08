@@ -8,30 +8,30 @@ type Props = {
 
 const Navigation: FunctionComponent<Props> = ({ account, setAccount }) => {
 
-    useEffect(() => {
-        connectHandler();
-    }, []);
-
-    const connectHandler = async () => {//permet de recuperer le compte connecté
-        if(typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request!({ method: 'eth_requestAccounts' });
+   const connectHandler = async () => {//permet de recuperer le compte connecté
+        const accounts = await window.ethereum?.request!({ method: 'eth_requestAccounts' });
         const account = ethers.utils.getAddress(accounts[0])
         setAccount(account);
-        }
     }
+
+    useEffect(() => {
+      connectHandler();
+  }, []);
+
+    
 
 return (
     <nav className="navbar">
         <a href="/"><img className="logo" src='/logo.png' /></a>
           <div>
               {account === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" && 
-                <a href="/add" className="nav-item">Add</a>
+                <a href="/add" className="nav-item">Ajouter</a>
               }
               {account !== "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" &&
-                <a href="/myOrders" className="nav-item">My orders</a>
+                <a href="/myOrders" className="nav-item">Mes commandes</a>
               }
               {account === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" &&
-                <a href="/AllOrders" className="nav-item">Customers orders</a>
+                <a href="/allOrders" className="nav-item">Commandes clients</a>
               }
               {account ? ( //si il y a un compte co
                 <button
@@ -46,7 +46,7 @@ return (
                     className='nav-connect'
                     onClick={connectHandler}
                 >
-                    Connect
+                    Connexion
                 </button>
             )}
           </div>

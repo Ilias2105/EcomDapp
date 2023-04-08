@@ -49,11 +49,11 @@ const OrderCard: FunctionComponent<Props> = ({order}) => {
                     {error && <p className="error">{error}</p>}
                     <img className='img-order' src={`${watch?.image}`} alt="" height="100" />
                     <div className='item-order'>
-                      <div><h4>Watch model : </h4>{watch?.name}</div>
-                      <div><h4>Buyer : </h4>{order.buyer} ETH</div>
+                      <div><h4>Modèle de la montre : </h4>{watch?.name}</div>
+                      <div><h4>Acheteur : </h4>{order.buyer} ETH</div>
                       <div><h4>Date : </h4>{order.date?.toDateString()}</div>
-                      <div><h4>Quantity : </h4>{order.quantity}</div>
-                      <div><h4>Amount : </h4>{order.amount} ETH</div>
+                      <div><h4>Quantité : </h4>{order.quantity}</div>
+                      <div><h4>Montant : </h4>{order.amount} ETH</div>
                     </div>
                   </div>
       );

@@ -40,7 +40,7 @@
   width: 135px;
   height: 40px;
   margin-right: 20px;
-  background-color: rgb(236, 85, 51);
+  background-color: rgb(236, 92, 60);
   border-radius: 5px;
   font-family: "Open Sans";
   font-size: 1.15em;
@@ -49,8 +49,7 @@
 }
 
 .nav-connect:hover {
-  width: 160px;
-  background-color: rgb(240, 81, 81);
+  background-color: rgb(238, 54, 54);
 }
 
 .logo {
@@ -62,13 +61,14 @@
 /*Banner*/
 
 .banimg {
-  width: 95%;
+  width: 75%;
   height: 400px;
+  margin-top: 10px;
 }
 
 .search {
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
   justify-content: center;
 }
 
@@ -86,10 +86,9 @@ h2{
 }
 
 .search-button {
-  background-color: rgb(231, 30, 30);
-  color: #ccc;
-  border: none;
-  font-size: 15px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(206, 198, 198);
+  font-size: 20px;
   width: 40px;
   cursor: pointer;
   margin-bottom: 20px;
@@ -137,8 +136,9 @@ h2{
 }
 
 .imgBuy:hover {
-  width: 630px;
-  height: 520px;
+  width: 485px;
+  height: 405px;
+  box-shadow: 3px 3px 12px rgb(7, 7, 7);
 }
 
 .elementBuy{
@@ -240,6 +240,149 @@ h4{
   display: inline;
 }
 
+/*Watch-Card*/
+
+.product {
+  text-align: center;
+  width: 290px;
+  margin: 20px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.product:hover {
+  box-shadow: 3px 3px 12px rgb(7, 7, 7);
+}
+
+.product-image {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-name {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-price {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(211, 54, 54);
+}
+
+/*Watch-Form*/
+
+h1{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add {
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  font-family: sans-serif;
+  box-shadow: 3px 3px 12px rgb(7, 7, 7);
+  margin-bottom: 50px;
+  background-color: rgb(31, 30, 30);
+}
+
+form label {
+  font-family:cursive;
+  color: white;
+}
+
+form input[type="text"],
+form textarea {
+width: 80%;
+display: block;
+padding: 12px 20px;
+margin: 0 auto;
+margin-bottom: 20px;
+box-sizing: border-box;
+border: 1px solid rgb(57, 56, 56);
+border-radius: 4px;
+background-color: rgb(31, 30, 30);
+color: white;
+}
+
+button[type="submit"] {
+  width: 150px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e32016;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 50px;
+}
+
+button[type="submit"]:hover {
+  background-color: #fb2706;
+  transform: scale(1.1);
+}
+
+button[type="submit"]:active {
+  background-color: #d63a1b;
+  transform: scale(0.9);
+}
+
+input[type="file"] {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+input[type="file"]:hover {
+  background-color: #f0f0f0;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  width: 50%;
+  padding: 12px;
+  background-color: #b3b9b3;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #030303;
+}
+
+.error{
+  color: #c45e5e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.logo-watch {
+  height: 46px;
+}
+
 /*Footer*/
 
 .site-footer {
@@ -272,6 +415,7 @@ h4{
 
 .p-footer {
   font-size: 10px;
+  color: #e32016;
 }
 
 

@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Watch {
     
+    //librairie de contrats OpenZeppelin pour implémenter un compteur, montre, commentaires et commandes
     using Counters for Counters.Counter;
     Counters.Counter private _watchesIds;
     Counters.Counter private _commentsIds;
@@ -19,6 +20,7 @@ contract Watch {
         _;
     }
 
+    // Les structures de données
     struct watch {
         uint id;
         string name;
@@ -43,11 +45,14 @@ contract Watch {
         string comment;
         uint idWatch;
     }
-
+    
+    //Stocker les structures de données dans les mapping
     mapping(uint => watch) Watches;
     mapping(uint => comment) Comments;
-
-    mapping(uint => order) Orders; 
+    mapping(uint => order) Orders;
+    //permettra d afficher les commandes d'un utilisateur et les commentaires d'une montre
+    mapping(address => uint[]) UserOrders; // Stocker les ids des commandes par utilisateur, uint[]= les id commande
+    mapping(uint => uint[]) WatchComments; // stocker les ids des commentaires par montre 
 
     constructor() {
         owner = msg.sender;
@@ -78,39 +83,24 @@ contract Watch {
     }
     
     function getMyOrders(address _user) external view returns(order[] memory){
-        uint size = 0;
-        for(uint i = 1; i <= _ordersIds.current(); i++) {
-        if(Orders[i].buyer == _user){
-                size++;
-          }
+        uint[] storage userOrders = UserOrders[_user];
+        order[] memory orderTab = new order[](userOrders.length);
+
+        for(uint i = 0; i < userOrders.length; i++) {
+            orderTab[i] = Orders[userOrders[i]];
         }
 
-        order[] memory orderTab = new order[](size);
-        uint j = 0;
-        for(uint i = 1; i <= _ordersIds.current(); i++) {
-        if(Orders[i].buyer == _user){
-                orderTab[j] = Orders[i];
-                j++;
-          }
-        }
         return orderTab;
     }
 
     function getComments(uint _idWatch) external view returns(comment[] memory) {
-        uint size = 0;
-        for(uint i = 1; i <= _commentsIds.current(); i++) {
-        if(Comments[i].idWatch == _idWatch){
-                size++;
-          }
+        uint[] storage watchComments = WatchComments[_idWatch];
+        comment[] memory commentTab = new comment[](watchComments.length);
+
+        for(uint i = 0; i < watchComments.length; i++) {
+            commentTab[i] = Comments[watchComments[i]];
         }
-        comment[] memory commentTab = new comment[](size);
-        uint j = 0;
-        for(uint i = 1; i <= _commentsIds.current(); i++) {
-        if(Comments[i].idWatch == _idWatch){
-                commentTab[j] = Comments[i];
-                j++;
-          }
-        }
+
         return commentTab;
     }
 
@@ -129,13 +119,6 @@ contract Watch {
         Watches[newItemId].quantity = _quantity;
     }
 
-    function setWatch(uint _id, string memory _name, string memory _description, uint _price, string memory _image, uint _quantity) external isOwner{
-        Watches[_id].name = _name;
-        Watches[_id].description = _description;
-        Watches[_id].price = _price;
-        Watches[_id].image = _image;
-        Watches[_id].quantity = _quantity;
-    }
 
     function addComment(uint _idWatch, string memory _comment) external {
         _commentsIds.increment(); //on ajoute un
@@ -144,24 +127,25 @@ contract Watch {
         Comments[newItemId].author = msg.sender;
         Comments[newItemId].comment = _comment;
         Comments[newItemId].idWatch = _idWatch;
-    } //dire a la fin on pourrait aller plus loin et aussi ajouter une fct qui permet de modifier 
+        WatchComments[_idWatch].push(newItemId);//Ajouter l'ID du commentaire au mapping des commentaires de montre
+    }
 
     function buy(uint _idWatch, uint _quantity, address payable _to) external payable {
-        //tester si la commande se créé quand meme si la tx a echoué
         _ordersIds.increment();
         uint256 newItemId = _ordersIds.current(); 
         Orders[newItemId].id = newItemId;
         Orders[newItemId].buyer = msg.sender;
         Orders[newItemId].quantity = _quantity;
-        Orders[newItemId].amount = _quantity * Watches[_idWatch].price;//voir si le calcul fctn
+        Orders[newItemId].amount = _quantity * Watches[_idWatch].price;
         Orders[newItemId].date = block.timestamp;
         Orders[newItemId].idWatch = _idWatch;
         Watches[_idWatch].quantity -= _quantity;
+        UserOrders[msg.sender].push(newItemId);// Ajouter l'ID de la commande au mapping des commandes de l'util
         _to.transfer(msg.value);
     }
 
     function withdraw() public payable isOwner{
-      require(payable(msg.sender).send(address(this).balance)); //envoi ce qui est dans le contrat vers owner
+      require(payable(msg.sender).send(address(this).balance));
     }
 
     receive() external payable {}

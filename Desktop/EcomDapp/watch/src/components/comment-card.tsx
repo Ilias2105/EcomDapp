@@ -13,7 +13,7 @@ type Props = {
     return(
             <div className='comment'>
                 <p className='text-comment'>{comment.comment}</p>
-                <p className='text-comment'>Address : {comment.author}</p>
+                <p className='text-comment'>Adresse : {comment.author}</p>
             </div>
          
     );
